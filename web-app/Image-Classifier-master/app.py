@@ -12,11 +12,8 @@ import tensorflow as tf
 import os
 #ignore AVX AVX2 warning 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-
 # initialize our Flask application and the Keras model
 app = flask.Flask(__name__)
-model = None
-
 UPLOAD_FOLDER = os.path.join(app.root_path ,'static','img')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -26,8 +23,9 @@ def load_model_():
 	# load the pre-trained Keras model (here we are using a model
 	# pre-trained on ImageNet and provided by Keras, but you can
 	# substitute in your own networks just as easily)
-	global model
-	model = load_model("2000-10-0.001-adam.h5")
+    global model
+    model = load_model("VGG16-10-0.0001-adam.h5")
+    
 
 def prepare_image(image, target):
 	# if the image mode is not RGB, convert it
@@ -45,9 +43,10 @@ def prepare_image(image, target):
 
 @app.route("/", methods=["POST","GET"])
 def predict():
+
 	# initialize the data dictionary that will be returned from the
 	# view
-    data = {"success": False}
+    data = {"success": "Upload X-ray"}
     title = "Upload an image"
     name = "default.png"
     # ensure an image was properly uploaded to our endpoint
@@ -81,7 +80,19 @@ def predict():
 			# indicate that the request was a success
             with graph.as_default():
                 preds = model.predict(processed_image)
-            data["predictions"] = np.argmax(preds,axis=1)
+            pred = np.argmax(preds,axis=1)[0]
+
+
+            #Metrics
+            accuracy = 0.7916 * 100
+
+
+            data["accuarcy"] = accuracy
+            if pred:
+                data["prediction"] = "Positive"
+            else:
+                data["prediction"] = "Negative"
+
             data["success"] = "Uploaded"
             title = "predict"
             
@@ -91,10 +102,14 @@ def predict():
 # if this is the main thread of execution first load the model and
 # then start the server
 
+@app.route('/presenation')
+def presentation():
+	return render_template('presentation.html')
+
 if __name__ == "__main__":
-	print(("* Loading Keras model and Flask starting server..."
+    print(("* Loading Keras model and Flask starting server..."
 		"please wait until server has fully started.(60sec)"))
-	load_model_()
-	global graph
-	graph = tf.get_default_graph()
-	app.run(debug=True)
+    load_model_()
+    global graph
+    graph = tf.get_default_graph()
+    app.run(debug=True)

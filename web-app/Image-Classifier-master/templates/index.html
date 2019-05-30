@@ -1,42 +1,108 @@
 <!doctype html>
 
 <head>
-    <title> {{ title }} </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-    <link rel="icon" href="{{url_for('static', filename='logo.png')}}" type="image/gif" sizes="16x16" <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        ul {
-            list-style-type: none;
-        }
-    </style>
-    <style>
-        .body-container {
-            max-width: 30%;
-        }
-    </style>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <title> {{ title }} </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="icon" href="{{url_for('static', filename='logo.png')}}" type="image/gif" sizes="16x16">
+
 </head>
 
 <body>
-    <center>
-        <div class="body-container">
-            <div class="jumbotron">
-                <h3> {{ data.success }} </h3>
+    <section class="hero is-light is-large">
+        <div class="hero-body" style="padding-top:9rem;">
+            <div class="container" style="max-width:94%">
+                <div class="columns is-centered is-3">
+                    <div class="columns is-half has-background-dark has-text-white">
+                        <div class="column">
+                            <div class="columns">
+                                <div class="column">
+                                    <h1 class="title is-1 has-text-white">
+                                        Classifying TB
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column">
+                                    <h2 class="subtitle has-text-white">
+                                        An application that uses CNN, to predict TB.
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column">
+                                    <p>We used a pretrained CNN(VGG16) for predictions and applied transfer learning to re-train some of it's layers on Lung X-ray(s).Apart from the VGG16, we have also added 3 dense layers for the CNN to properly learn the
+                                        features. A dropout layer is also added to prevent the Neural Network from over-fitting.</p>
+                                </div>
+                            </div>
 
-                <form method="post" enctype="multipart/form-data">
-                    <input class="btn btn-primary" type="file" name="image" accept="image/*"><br>
-                    <input class="btn btn-primary" type="submit">
-                </form><br>
+                            <div class="columns ">
+                                <div class="column">
+                                    <h3 class="subtitle has-text-white">Specifications</h3>
+                                    <hr/>
+                                    <ul>
+                                        <li>Model Name: VGG16</li>
+                                        <li>Optimizer: Adam</li>
+                                        <li>Number of epochs trained on: 10</li>
+                                        <li>Learning rate: 0.0001</li>
+                                        <li>Validation loss: 0.4742</li>
+                                        <li>Validation accuracy: 0.7916 or 79.16%</li>
+                                        <li>
+                                            <a href="{{url_for('presentation')}}" target="_blank">More Information</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
 
-                <img src="static/img/{{ name }}" width="50%" height="40%" alt="{{ name }}"> {{data.predictions}}
+                        <div class="column is-half has-background-warning">
+                            <div class="columns has-text-centered">
+                                <div class="column">
+                                    <h1 class="title is-3 has-text-white">
+                                        {{data.success}}
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="columns is-centered ">
+                                <div class="column is-half has-text-centered">
+                                    <form method="post" enctype="multipart/form-data">
+                                        <div class="columns">
+                                            <input class="button is-normal" type="file" name="image" accept="image/*"><br/>
+                                        </div>
+                                        <div class="columns is-centered">
+                                            <input class="button is-normal" type="submit">
+                                        </div>
+                                    </form><br>
+
+                                </div>
+                            </div>
+                            <div class="columns is-centered">
+                                <div class="column has-text-centered is-half">
+                                    <figure class="image" style="">
+                                        <img src="static/img/{{ name }}" alt="{{ name }}">
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="columns is-centered">
+                                <div class="column has-text-centered">
+                                    <h2 class="subtitle">
+                                        {% if data.prediction == "Positive" %}
+                                        <h2 class="title is-1 has-text-danger">{{data.prediction}}
+                                        </h2>
+                                        {% else %}
+                                        <h2 class="title is-1 has-text-success">{{data.prediction}}
+                                        </h2>
+                                        {% endif %}
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </center>
-
-
+    </section>
 </body>
 
 </html>
