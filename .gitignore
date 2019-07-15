@@ -6,3 +6,6 @@ web-app/Image-Classifier-master/static/img/*.png
 web-app/Image-Classifier-master/static/img/*.jpg
 web-app/Image-Classifier-master/static/img/*.jpeg
 trained-models/
+__pycache__
+*.h5
+ignore-this

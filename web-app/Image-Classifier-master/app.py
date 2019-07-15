@@ -17,14 +17,12 @@ app = flask.Flask(__name__)
 UPLOAD_FOLDER = os.path.join(app.root_path ,'static','img')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-		
-
 def load_model_():
 	# load the pre-trained Keras model (here we are using a model
 	# pre-trained on ImageNet and provided by Keras, but you can
 	# substitute in your own networks just as easily)
     global model
-    model = load_model("VGG16-10-0.0001-adam.h5")
+    model = load_model("VGG16-50-0.0001-adam.h5")
     
 
 def prepare_image(image, target):
@@ -52,7 +50,8 @@ def predict():
     # ensure an image was properly uploaded to our endpoint
     if flask.request.method == "POST":
         if flask.request.files.get("image"):
-            
+            graph = tf.get_default_graph()
+            model = load_model("VGG16-50-0.0001-adam.h5")
             image1 = flask.request.files["image"]
             # save the image to the upload folder, for display on the webpage.
             image = image1.save(os.path.join(app.config['UPLOAD_FOLDER'], image1.filename))
@@ -64,20 +63,6 @@ def predict():
             # preprocess the image and prepare it for classification
             processed_image = prepare_image(image, target=(224, 224))
 
-            # classify the input image and then initialize the list
-            # of predictions to return to the client
-            # with graph.as_default():
-            #     preds = model.predict(processed_image)
-            #     results = imagenet_utils.decode_predictions(preds)
-            #     data["predictions"] = []
-            
-            # loop over the results and add them to the list of
-            # returned predictions
-            # for (imagenetID, label, prob) in results[0]:
-            #     r = {"label": label, "probability": float(prob)}
-            #     data["predictions"].append(r)
-			
-			# indicate that the request was a success
             with graph.as_default():
                 preds = model.predict(processed_image)
             pred = np.argmax(preds,axis=1)[0]
@@ -109,7 +94,7 @@ def presentation():
 if __name__ == "__main__":
     print(("* Loading Keras model and Flask starting server..."
 		"please wait until server has fully started.(60sec)"))
-    load_model_()
-    global graph
-    graph = tf.get_default_graph()
+    # load_model_()
+    # global graph
+    # graph = tf.get_default_graph()
     app.run(debug=True)
