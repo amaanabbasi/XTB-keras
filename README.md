@@ -17,6 +17,9 @@ Identyfying TB from lung X-rays using CNNs.
 * The web application is live at [........](https://tb-classifier.herokuapp.com/)
 
 
+![Screenshot from 2019-07-16 12-24-48](https://user-images.githubusercontent.com/30196830/61272452-d1fda380-a7c4-11e9-94e8-36d0d7853ecf.png)
+
+
 ![VGG16(m)-accuracy-100-epochs](https://user-images.githubusercontent.com/30196830/61233908-4f86cc80-a74f-11e9-818c-1aa11bbd51fb.png)
 
 ![VGG16(m)-loss-100-epochs](https://user-images.githubusercontent.com/30196830/61233910-531a5380-a74f-11e9-8ea3-3e870bbe3ef2.png)
