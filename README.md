@@ -10,6 +10,8 @@ Dataset is obtained from [here](https://www.kaggle.com/kmader/pulmonary-chest-xr
 
 * Notebooks: It contains the code for the training part of the model with the various parameters used in the model. This is the entry point where you can start training the model and experiment with different parameters.
 
+* Scripts: contains the contains `.py` files.
+
 * web-app: Contains code for the web-application, A prototype to give a overview on what the final application might look like.
 
 # Requirements
