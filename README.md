@@ -2,10 +2,14 @@
 
 Identyfying TB from lung X-rays using CNNs. 
 
+# Dataset 
+
+Dataset is obtained from [here](https://www.kaggle.com/kmader/pulmonary-chest-xray-abnormalities) which consisted of 2 differnet set of scans, ChinaSet and Montgomery.
 
 # Navigation
 
-* Notebooks: It contains the code for the training part of the model with the various parameters used in the model. This is the entry point where you can start training your own models and experiment with different parameters.
+* Notebooks: It contains the code for the training part of the model with the various parameters used in the model. This is the entry point where you can start training the model and experiment with different parameters.
+
 * web-app: Contains code for the web-application, A prototype to give a overview on what the final application might look like.
 
 # Requirements
@@ -14,7 +18,7 @@ Identyfying TB from lung X-rays using CNNs.
 * keras
 * Flask(to run web-app locally)
 
-* The web application is live at [........](https://tb-classifier.herokuapp.com/)
+* The web application is live at [Heroku](https://tb-classifier.herokuapp.com/)
 
 
 ![Screenshot from 2019-07-16 12-24-48](https://user-images.githubusercontent.com/30196830/61272452-d1fda380-a7c4-11e9-94e8-36d0d7853ecf.png)
