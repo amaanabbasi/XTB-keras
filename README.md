@@ -1,5 +1,5 @@
 # XTB-keras
-
+![](https://img.shields.io/github/status/s/pulls/amaanabbasi/XTB-keras/#1.svg)
 Identyfying TB from lung X-rays using CNNs. 
 
 # Dataset 
