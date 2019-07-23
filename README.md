@@ -20,6 +20,7 @@ Dataset is obtained from [here](https://www.kaggle.com/kmader/pulmonary-chest-xr
 
 # Usage
 `cd Notebooks`
+
 `jupyter notebook`
 
 ![Screenshot from 2019-07-16 12-24-48](https://user-images.githubusercontent.com/30196830/61272452-d1fda380-a7c4-11e9-94e8-36d0d7853ecf.png)
