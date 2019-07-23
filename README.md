@@ -31,7 +31,7 @@ Dataset is obtained from [here](https://www.kaggle.com/kmader/pulmonary-chest-xr
 |---    |---          |---     |---            |---          |---          |---       |
 | #1 Vgg16 | trained on last 10 layers | 50 | 0.001 | * | * | 0.79 |
 | #2 Vgg16 | trained on last 5 layers | 100 | 0.0001 | 0.766 | 0.85 | 0.789 |
-| #3 Vgg16 | trained on all layers | 100 | 0.0001 | 0.5 | 1 | 0 |
+| #3 Vgg16 | trained on all layers | 100 | 0.0001 | 0 | 1 | 0.5 |
 
 ### #2 Vgg16
 
