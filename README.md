@@ -48,8 +48,7 @@ It will help us improve upon the model and through this we can get an idea how t
 and based on that we can take better decisions to get in the right direction.
 
 Below is an image of a X-ray which is classified as positive, and the black outline tells it is the major contributing factor in the decesion by the classifier.
+![Screenshot from 2020-03-29 13-21-19](https://user-images.githubusercontent.com/30196830/77848801-02675f80-71e5-11ea-9b77-094d4c47d6db.png)
 
-![](![Screenshot from 2020-03-29 13-21-19](https://user-images.githubusercontent.com/30196830/77848801-02675f80-71e5-11ea-9b77-094d4c47d6db.png)
-)
 
 
