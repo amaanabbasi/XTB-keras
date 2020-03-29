@@ -22,7 +22,7 @@ def load_model_():
 	# pre-trained on ImageNet and provided by Keras, but you can
 	# substitute in your own networks just as easily)
     global model
-    model = load_model("VGG16-50-0.0001-adam.h5")
+    model = load_model("VGG16-100-0.0001-adam.h5")
     
 
 def prepare_image(image, target):
@@ -51,7 +51,7 @@ def predict():
     if flask.request.method == "POST":
         if flask.request.files.get("image"):
             graph = tf.get_default_graph()
-            model = load_model("VGG16-50-0.0001-adam.h5")
+            model = load_model("VGG16-100-0.0001-adam.h5")
             image1 = flask.request.files["image"]
             # save the image to the upload folder, for display on the webpage.
             image = image1.save(os.path.join(app.config['UPLOAD_FOLDER'], image1.filename))

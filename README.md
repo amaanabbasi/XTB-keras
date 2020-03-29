@@ -16,3 +16,13 @@ Identyfying TB from lung X-rays using CNNs.
 
 * The web application is live at [........](https://tb-classifier.herokuapp.com/)
 
+# Explainable Model
+
+LIME (Local Interpretable Model-Agnostic Explainations) is method to get explaination about the model on why it is making certain decesion it's making.
+It will help us improve upon the model and through this we can get an idea how to proceed further and at any point of time we can rely on it for feedback 
+and based on that we can take better decisions to get in the right direction.
+
+Below is an image of a X-ray which is classified as positive, and the black outline tells it is the major contributing factor in the decesion by the classifier.
+
+
+
